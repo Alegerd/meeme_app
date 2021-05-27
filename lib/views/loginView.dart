@@ -128,6 +128,7 @@ class LoginViewState extends State<LoginView> {
       } else {
         _emailController.clear();
         _passwordController.clear();
+        Navigator.of(context).popAndPushNamed("/Main");
       }
       user.firstName = _name;
       DatabaseService().createUser(user);

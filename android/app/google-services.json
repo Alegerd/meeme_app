@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "703082182843",
+    "project_id": "meemeapp",
+    "storage_bucket": "meemeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703082182843:android:3218bf938354e5added19e",
+        "android_client_info": {
+          "package_name": "com.alegerd.meemeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703082182843-cnbv8tkpn49g953dbsjsuonk47v3vqbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo_lJfz7vNoQwnxJXgL3VWxbfHLh8BdZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703082182843-cnbv8tkpn49g953dbsjsuonk47v3vqbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

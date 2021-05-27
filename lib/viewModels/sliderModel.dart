@@ -31,13 +31,13 @@ List<SliderModel> getSlides(){
 
   var sliderModel1 = SliderModel();
   sliderModel1.setImageAssetPath("assets/onboarding1.png");
-  sliderModel1.setTitle("Upload your EPIC or AESTHETIC photos!");
+  sliderModel1.setTitle("Create Your Meemes");
   sliderModel1.setDesc("");
   slides.add(sliderModel1);
 
   var sliderModel2 = SliderModel();
   sliderModel2.setImageAssetPath("assets/onboarding2.png");
-  sliderModel2.setTitle("Rate others!");
+  sliderModel2.setTitle("Like Other Meemes");
   sliderModel2.setDesc("");
   slides.add(sliderModel2);
 

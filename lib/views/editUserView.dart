@@ -71,7 +71,7 @@ class EditProfileView extends StatelessWidget {
 
   applyChanges() {
     FirebaseFirestore.instance.collection('users').doc(localUser.id).update({
-      "name": nameController.text
+      "firstName": nameController.text
       // "bio": bioController.text,
     });
   }

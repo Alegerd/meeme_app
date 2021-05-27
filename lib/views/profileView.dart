@@ -72,6 +72,7 @@ class _ProfilePage extends State<ProfileView>
 
   void logout() async {
     await AuthenticationService().logout();
+    Navigator.of(context).popAndPushNamed("/SignUp");
   }
 
   @override

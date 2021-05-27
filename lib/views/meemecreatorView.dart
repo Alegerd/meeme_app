@@ -228,6 +228,7 @@ class MeemeCreatorViewState extends State<MeemeCreatorView>
         uploading = false;
       });
     });
+    Navigator.of(context).popAndPushNamed("/Main");
   }
 
   void postToFireStore(String mediaUrl) async {

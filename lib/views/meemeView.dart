@@ -30,7 +30,7 @@ class MeemeView extends StatefulWidget {
 
   factory MeemeView.fromPost(Meeme meeme, AppUser user) {
     return MeemeView(
-      username: user.firstName,
+      username: user == null ? "" : user.firstName,
       mediaUrl: meeme.imageUrl,
       meemeText: meeme.text,
       likes: meeme.likes,
@@ -187,7 +187,7 @@ class _ImagePost extends State<MeemeView> {
   @override
   Widget build(BuildContext context) {
     user = Provider.of<AppUser>(context);
-    liked = (likes[user.id] == true);
+    liked = user == null ? false : (likes[user.id] == true);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -221,6 +221,9 @@ class _ImagePost extends State<MeemeView> {
   }
 
   void _likePost(String postId2) {
+    if (user == null)
+      return;
+
     var userId = user.id;
     bool _liked = likes[userId] == true;
 

@@ -39,19 +39,14 @@ class LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     Widget _form(String label, void onPress()) {
+
+      void onSkip() {
+        Navigator.of(context).popAndPushNamed("/Main");
+      }
+
       return Container(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 20, top: 50),
-              child: Text(
-                "Meeme App",
-                style: TextStyle(
-                    color: AppColors.mainColor,
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w400),
-              ),
-            ),
             Padding(
               padding: EdgeInsets.only(bottom: 20, top: 10),
               child: InputWidget.createInput("Email", _emailController, false),
@@ -68,6 +63,24 @@ class LoginViewState extends State<LoginView> {
                 height: 50,
                 width: MediaQuery.of(context).size.width,
                 child: _button(label, onPress),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                child: RaisedButton(
+                  splashColor: Theme.of(context).primaryColor,
+                  highlightColor: Theme.of(context).primaryColor,
+                  color: AppColors.mainColor,
+                  child: Text("Skip",
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                  onPressed: () => { onSkip() },
+                )
               ),
             )
           ],
@@ -137,10 +150,20 @@ class LoginViewState extends State<LoginView> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 43),
+          SizedBox(height: 10),
           (showLogin
               ? Column(
                   children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20, top: 50),
+                      child: Text(
+                        "Meeme App",
+                        style: TextStyle(
+                            color: AppColors.mainColor,
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
                     _form("login", _loginUser),
                     Padding(
                       padding: EdgeInsets.all(10),
@@ -160,12 +183,22 @@ class LoginViewState extends State<LoginView> {
                 )
               : Column(
                   children: <Widget>[
-                    _form("Sign Up", _signUpUser),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 20, top: 50),
+                      child: Text(
+                        "Meeme App",
+                        style: TextStyle(
+                            color: AppColors.mainColor,
+                            fontSize: 50.0,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 20, top: 10),
                       child: InputWidget.createInput(
                           "Name", _nameController, false),
                     ),
+                    _form("Sign Up", _signUpUser),
                     Padding(
                       padding: EdgeInsets.all(10),
                       child: GestureDetector(

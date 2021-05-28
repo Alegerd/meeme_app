@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:meeme_app/widgets/goto_signup_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:meeme_app/model/meemeImage.dart';
@@ -70,6 +71,9 @@ class MeemeCreatorViewState extends State<MeemeCreatorView>
   @override
   Widget build(BuildContext context) {
     user = Provider.of<AppUser>(context);
+    if (user == null)
+      return GotoSingUpWidget();
+
     _getMeemeImages();
     super.build(context);
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meeme_app/model/user.dart';
 import 'package:meeme_app/services/database.dart';
+import 'package:meeme_app/widgets/goto_signup_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:meeme_app/model/meemeImage.dart';
 import 'package:meeme_app/model/meeme.dart';
@@ -33,8 +34,8 @@ class MeemesViewState extends State<MeemesView>
 
   @override
   Widget build(BuildContext context) {
-    _refresh();
     user = Provider.of<AppUser>(context);
+    _refresh();
     _getFeed();
     super.build(context);
 
@@ -55,7 +56,7 @@ class MeemesViewState extends State<MeemesView>
   _getFeed() async {
     List<MeemeView> listOfPosts;
     meemes = await DatabaseService().getMeemes();
-    AppUser userFromDb = await DatabaseService().getUser(user.id);
+    AppUser userFromDb = user == null ? null : await DatabaseService().getUser(user.id);
     listOfPosts = _generateFeed(meemes, userFromDb);
     setState(() {
       feedData = listOfPosts;
@@ -79,8 +80,7 @@ class MeemesViewState extends State<MeemesView>
 // ignore: must_be_immutable
 class ActivityFeedItem extends StatelessWidget {
   final String username;
-  final String
-      userId; // types include liked photo, follow user, comment on photo
+  final String userId; // types include liked photo, follow user, comment on photo
   final String mediaUrl;
   final String mediaId;
 

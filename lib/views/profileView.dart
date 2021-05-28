@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:meeme_app/widgets/goto_signup_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:meeme_app/model/user.dart';
 import 'package:meeme_app/services/auth.dart';
@@ -78,6 +79,9 @@ class _ProfilePage extends State<ProfileView>
   @override
   Widget build(BuildContext context) {
     localUser = Provider.of<AppUser>(context);
+    if (localUser == null)
+      return GotoSingUpWidget();
+
     currentUserId = localUser.id;
     profileId = localUser.id;
     super.build(context);
@@ -225,7 +229,10 @@ class _ProfilePage extends State<ProfileView>
       ));
     }
 
-    return StreamBuilder(
+    return
+      localUser == null ?
+      GotoSingUpWidget() :
+      StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(profileId.trim())
